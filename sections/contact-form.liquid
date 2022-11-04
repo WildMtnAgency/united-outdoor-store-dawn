@@ -67,6 +67,12 @@
         <input type="tel" id="ContactForm-phone" class="field__input" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="{{ 'templates.contact.form.phone' | t }}">
         <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
       </div>
+      {% if section.settings.isOrderNumberEnabled %}
+      <div class="field">
+        <input type="text" id="ContactForm-orderNumber" class="field__input" name="contact[order number]" placeholder="Order Number"/>
+        <label class="field__label" for="ContactForm-orderNumber">Order Number</label>
+      </div>
+      {% endif %}
       <div class="field">
         <textarea
           rows="10"
@@ -151,6 +157,11 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "checkbox",
+      "id": "isOrderNumberEnabled",
+      "label": "Enable order number"
     }
   ],
   "presets": [
